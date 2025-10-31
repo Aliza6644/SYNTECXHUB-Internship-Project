@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Aliza </title>
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa7bd;
+      --accent: #6ee7b7;
+      --accent-2: #7dd3fc;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      --maxw: 1100px;
+      --ff: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background:linear-gradient(180deg,#071023 0%, #071726 50%, #051022 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Layout container */
+    .wrap{
+      max-width:var(--maxw);
+      margin:36px auto;
+      padding:28px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      display:grid;
+      gap:28px;
+      grid-template-columns: 320px 1fr;
+      align-items:start;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background:var(--card);
+      padding:22px;
+      border-radius:var(--radius);
+      position:sticky;
+      top:28px;
+      height:fit-content;
+      box-shadow: 0 4px 18px rgba(2,6,23,0.6);
+    }
+    .avatar{
+      width:100%;
+      height:180px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:28px;
+      color:#042028;
+      letter-spacing:1px;
+      margin-bottom:14px;
+    }
+    h1{font-size:20px;margin:0 0 6px}
+    .sub{color:var(--muted);font-size:13px;margin-bottom:12px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      background:var(--glass);
+      color:var(--muted);
+      padding:8px 10px;border-radius:10px;
+      font-size:13px;
+      display:inline-block;
+      transition:transform .18s ease, background .18s ease;
+    }
+    .pill:hover{transform:translateY(-4px); background:rgba(110,231,183,0.06); color:var(--accent)}
+
+    .socials{margin-top:14px; display:flex; gap:10px}
+    .socials a{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:10px;
+      background:rgba(255,255,255,0.02); color:var(--muted);
+      text-decoration:none; font-weight:600; transition:transform .18s ease, background .18s ease;
+    }
+    .socials a:hover{transform:translateY(-4px); background:linear-gradient(90deg, rgba(125,211,252,0.12), rgba(110,231,183,0.08)); color:var(--accent-2)}
+
+    /* Main content */
+    main{padding:10px 6px}
+    .section{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.02));
+      padding:18px;
+      border-radius:12px;
+      margin-bottom:18px;
+      box-shadow: 0 2px 10px rgba(2,6,23,0.4);
+    }
+    .section h2{margin:0 0 8px; font-size:16px}
+    .lead{color:var(--muted); font-size:14px; margin-bottom:12px}
+
+    /* Skills - chips */
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted);transition:all .18s ease}
+    .skill:hover{transform:translateY(-4px); color:var(--accent); box-shadow: 0 6px 18px rgba(110,231,183,0.05)}
+
+    /* Projects grid */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.03));
+      padding:14px;border-radius:12px;
+      transition:transform .20s cubic-bezier(.2,.9,.3,1), box-shadow .18s ease;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .card:hover{transform:translateY(-8px); box-shadow: 0 12px 40px rgba(2,6,23,0.6)}
+    .card h3{margin:0 0 8px;font-size:15px}
+    .card p{color:var(--muted);font-size:13px;margin:0 0 10px}
+    .card a{
+      display:inline-block;font-weight:700;padding:8px 12px;border-radius:10px;text-decoration:none;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#042028;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .card a:hover{opacity:.92; transform:translateY(-3px)}
+
+    /* Contact */
+    .contact-form{display:grid;gap:10px}
+    .contact-form input, .contact-form textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
+      background:transparent;color:inherit;font-size:14px;
+    }
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#042028;font-weight:800;text-decoration:none;cursor:pointer;
+      transition:transform .18s ease;
+    }
+    .btn:hover{transform:translateY(-3px)}
+
+    /* Top nav (small) */
+    .topbar{
+      display:flex;gap:12px;justify-content:flex-end;align-items:center;margin-bottom:10px;
+    }
+    .topbar a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px;border-radius:8px}
+    .topbar a:hover{color:var(--accent)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding:18px}
+      .sidebar{position:relative; top:auto}
+      .projects{grid-template-columns:1fr}
+    }
+
+    @media (max-width:480px){
+      :root{--maxw:98%}
+      .avatar{height:140px;font-size:20px}
+      .wrap{margin:14px auto;padding:16px}
+    }
+
+    /* Smooth scroll for anchor links */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+
+  <div class="wrap" role="main">
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <div class="avatar">Aliza</div>
+      <h1>Aliza</h1>
+      <div class="sub">Frontend Developer • Student • Designer</div>
+
+      <div class="meta">
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">Responsive</span>
+
+      </div>
+
+      <div style="margin-top:14px; font-size:13px; color:var(--muted)">
+        <strong>Location</strong><div>Lahore, Pakistan</div>
+      </div>
+
+      <div class="socials" aria-hidden="false" style="margin-top:12px">
+        <a href="https://github.com/Aliza6644" title="GitHub">Git</a>
+        <a href="https://www.linkedin.com/in/aliza-tariq-5b4106335" title="LinkedIn">Linkdn</a>
+       
+      </div>
+
+      <div style="margin-top:16px; font-size:13px; color:var(--muted)">
+        <strong>Resume</strong>
+        <div style="margin-top:8px"><a class="btn" href="#" style="text-decoration:none">Download</a></div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main>
+      <div class="topbar" role="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <!-- About -->
+      <section id="about" class="section" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p class="lead">Hi — I'm <strong>Aliza</strong>. I build responsive websites and enjoy 
+          turning ideas into clean, accessible interfaces. Currently learning frontend development and working on personal projects.</p>
+        <p style="color:var(--muted);font-size:14px;margin:0">Diong BSIT from UOE • My goal is
+           to become a web Developer
+
+        </p>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <div class="skills" aria-hidden="false">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+           <span class="pill">JavaScript</span>
+            <span class="pill">React.js</span>
+          <span class="skill">Responsive Design</span>
+          <span class="skill">Flexbox & Grid</span>
+          <span class="skill">Basic Accessibility</span>
+          <span class="skill">Design Systems</span>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Countdown time </h3>
+      <p>Countdown time app using HTML, CSS, and JavaScript.</p>
+      <a href="https://github.com/Aliza6644/Javascript-projects/tree/main/countdown%20timer">View Project</a>
+    </div>
+    <div class="card">
+      <h3>rock-ppr-project </h3>
+      <p> rock paper game using html ,css and JavaScript.</p>
+      <a href="https://github.com/Aliza6644/Javascript-projects/tree/main/rock-ppr-project">View Project</a>
+    </div>
+    <div class="card">
+      <h3> Tic-Tac-Toe</h3>
+      <p>Play a fun 2-player game with a modern design.</p>
+      <a href="https://github.com/Aliza6644/Javascript-projects/tree/main/tic-tac-toe-project">View Project</a>
+    </div>
+    <div class="card">
+      <h3> Quiz app</h3>
+      <p>Quiz app using html,css and JavaScript!</p>
+      <a href="https://github.com/Aliza6644/Javascript-projects/tree/main/quiz%20app">View Project</a>
+    </div>
+  </div>
+</section>
+
+      <!-- Contact -->
+      <section id="contact" class="section" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="lead">Want to collaborate or hire me? Send a quick message.</p>
+
+        <form class="contact-form" action="#" onsubmit="alert('This form is a demo — add a backend to send messages.'); return false;" aria-label="Contact form">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+          <div>
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>
