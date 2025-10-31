@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" role="application" aria-label="Simple to do list">
+    <header>
+      <div>
+        <h1> Simple To-Do</h1>
+        <p>Add tasks, optional link(s), mark complete — saved locally in your browser.</p>
+      </div>
+    </header>
+
+    <form id="taskForm" autocomplete="off">
+      <div class="inputs">
+        <input id="taskInput" type="text" placeholder="Task title (e.g. Buy groceries)" required />
+        <input id="linkInput" type="url" placeholder="Optional link: https://..." />
+      </div>
+      <div class="buttons">
+        <button id="addBtn" type="submit"> Add</button>
+        <button id="clearBtn" class="secondary" type="button"> Clear done</button>
+      </div>
+    </form>
+
+    <section class="list" id="list"></section>
+
+    <footer>
+      <div id="counts">0 tasks • 0 done</div>
+      <div class="tip"> Tip: use emojis in your task title ✨</div>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

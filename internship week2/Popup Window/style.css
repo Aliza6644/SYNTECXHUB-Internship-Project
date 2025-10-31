@@ -1,0 +1,123 @@
+/* Dark Maroon Modal Theme */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3b0a0a, #7b1a1a);
+  margin: 0;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  text-align: center;
+}
+
+.open-btn {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.open-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* Modal Overlay */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Modal Box */
+.modal-content {
+  background: #4e0d0d;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transform: scale(0.8);
+  animation: slideUp 0.4s ease forwards;
+}
+
+/* Close Button */
+.close-btn {
+  float: right;
+  font-size: 1.5rem;
+  color: #ff5c5c;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff9999;
+}
+
+/* Form Elements */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #4d1818;
+  color: #fff;
+  outline: none;
+}
+
+.submit-btn {
+  background: #552323;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.03);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px) scale(0.8); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 85%;
+    padding: 20px;
+  }
+}
